@@ -1,13 +1,13 @@
 import React from 'react'
 import { TopMenu } from '../../components/common';
-import './TenantLayout.scss'
+import './VigilantLayout.scss'
 
-export function TenantLayout(props) {
-    const {children} =props;
+export function VigilantLayout(props) {
+    const {children}=props;
     return (
         <div className="admin-layout">
       <div className="admin-layout__menu">
-        <TopMenu title="Building tenant"/>
+        <TopMenu title="Building vigilant"/>
       </div>
 
       <div className="admin-layout__main-content">
