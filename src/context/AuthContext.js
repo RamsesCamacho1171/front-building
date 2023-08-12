@@ -1,9 +1,10 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { setToken, getToken, removeToken } from "../api/token";
-import { useUser } from "../hooks";
+import { useUser,useDepartment } from "../hooks";
 
 export const AuthContext = createContext({
   auth: undefined,
+  departmentAuth:undefined,
   login: () => null,
   logout: () => null,
 });
@@ -17,8 +18,12 @@ export function AuthProvider(props) {
     (async () => {
       const token = getToken();
       if (token) {
-        const me = await getMe(token);
-        setAuth({ token, me });
+        try {
+          const me = await getMe(token);
+          setAuth({ token, me });
+        } catch (error) {
+          setAuth(null);
+        }
       } else {
         setAuth(null);
       }
@@ -37,6 +42,7 @@ export function AuthProvider(props) {
       setAuth(null);
     }
   };
+
 
   const valueContext = {
     auth,

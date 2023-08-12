@@ -1,5 +1,6 @@
 import React from 'react'
 import { TopMenu } from '../../components/common';
+import { SideMenuTenant } from '../../components/tenant';
 import './TenantLayout.scss'
 
 export function TenantLayout(props) {
@@ -11,8 +12,7 @@ export function TenantLayout(props) {
       </div>
 
       <div className="admin-layout__main-content">
-        {/* <SideMenu>{children}</SideMenu> */}
-        {children}
+        <SideMenuTenant>{children}</SideMenuTenant>
       </div>
     </div>
     )

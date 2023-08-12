@@ -1,1 +1,2 @@
-export * from './HomeTenant'
+export * from './homeTenant'
+export * from './visit'

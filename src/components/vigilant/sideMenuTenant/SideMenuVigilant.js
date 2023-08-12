@@ -1,9 +1,10 @@
 import React from "react";
 import { Menu, Icon } from "semantic-ui-react";
 import { Link, useLocation } from "react-router-dom";
-import "./SideMenuTenant.scss";
+import { useAuth } from "../../../hooks";
+import "./SideMenuVigilant.scss";
 
-export function SideMenuTenant(props) {
+export function SideMenuVigilant(props) {
   const { children } = props;
   const { pathname } = useLocation();
 
@@ -17,27 +18,20 @@ export function SideMenuTenant(props) {
 
 function MenuLeft(props) {
   const { pathname } = props;
+  const { auth } = useAuth();
 
   return (
     <Menu fixed="left" borderless className="side" vertical>
-      <Menu.Item as={Link} to={"/tenant"} active={pathname === "/admin"}>
+      <Menu.Item as={Link} to={"/vigilant"} active={pathname === "/vigilant"}>
         <Icon name="home" /> Home
       </Menu.Item>
 
       <Menu.Item
         as={Link}
-        to={"/tenant/visit"}
-        active={pathname === "/tenant/visit"}
+        to={"/vigilant/access"}
+        active={pathname === "/vigilant/access"}
       >
-        <Icon name="calendar plus" /> Generar Invitado
-      </Menu.Item>
-
-      <Menu.Item
-        as={Link}
-        to={"/tenant/payments-history"}
-        active={pathname === "/tenant/payments-history"}
-      >
-        <Icon name="history" /> Historial de pagos
+        <Icon name="address book" /> accesos
       </Menu.Item>
 
     </Menu>

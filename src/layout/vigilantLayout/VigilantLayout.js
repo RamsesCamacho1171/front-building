@@ -1,5 +1,6 @@
 import React from 'react'
 import { TopMenu } from '../../components/common';
+import { SideMenuVigilant } from '../../components/vigilant';
 import './VigilantLayout.scss'
 
 export function VigilantLayout(props) {
@@ -11,8 +12,7 @@ export function VigilantLayout(props) {
       </div>
 
       <div className="admin-layout__main-content">
-        {/* <SideMenu>{children}</SideMenu> */}
-        {children}
+        <SideMenuVigilant>{children}</SideMenuVigilant>
       </div>
     </div>
     )
