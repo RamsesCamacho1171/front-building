@@ -8,13 +8,14 @@ import { useAuth,useDepartment,useVisit } from '../../../hooks';
 import './Visit.scss'
 
 export function Visit() {
-  const {auth} = useAuth();
+  const {auth, tenant} = useAuth();
   const {getDepartmentByUserId,department,loadingDepartment} = useDepartment();
   const {addVisit,token} = useVisit();
 
   useEffect(() => {
     (async()=>{
-      await getDepartmentByUserId(auth?.me?.id);
+      console.log(tenant);
+      await getDepartmentByUserId(tenant?.num_tenant);
     })();
   }, [])
 

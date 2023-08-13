@@ -1,10 +1,11 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { setToken, getToken, removeToken } from "../api/token";
-import { useUser,useDepartment } from "../hooks";
+import { useUser,useTenant} from "../hooks";
 
 export const AuthContext = createContext({
   auth: undefined,
-  departmentAuth:undefined,
+  tenant:undefined,
+  getTenant: () => null,
   login: () => null,
   logout: () => null,
 });
@@ -12,6 +13,8 @@ export const AuthContext = createContext({
 export function AuthProvider(props) {
   const { children } = props;
   const [auth, setAuth] = useState(undefined);
+  const [tenant, setTenant] = useState(undefined);
+  const {getTenantByUser} = useTenant();
   const { getMe } = useUser();
 
   useEffect(() => {
@@ -43,9 +46,20 @@ export function AuthProvider(props) {
     }
   };
 
+  const getTenant = async (id) =>{
+    try {
+      const response = await getTenantByUser(id);
+      setTenant(response);
+    } catch (error) {
+      throw error;
+    }
+  }
+
 
   const valueContext = {
     auth,
+    tenant,
+    getTenant,
     login,
     logout,
   };

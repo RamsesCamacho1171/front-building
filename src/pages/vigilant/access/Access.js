@@ -12,7 +12,7 @@ export function Access() {
     const [inputToken, setInputToken] = useState()
 
     const validate = async()=>{
-        await validateVisit(inputToken);
+        await validateVisit(inputToken.trim());
     }
 
     if (!auth?.me) {

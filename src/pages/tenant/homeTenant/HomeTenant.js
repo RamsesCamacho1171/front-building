@@ -5,7 +5,14 @@ import imagen from '../../../images/building.jpg'
 import './HomeTenant.scss'
 
 export function HomeTenant() {
-  const { auth } = useAuth();
+  const { auth, getTenant } = useAuth();
+
+  useEffect(() => {
+    if(auth){
+      getTenant(auth?.me?.id)
+    }
+  }, [])
+  
   
   if (!auth?.me) {
     return <Navigate to={'/'}></Navigate>
